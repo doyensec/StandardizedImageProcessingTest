@@ -22,7 +22,7 @@ const libsBasePath = "libs";
 // Test3: Embedding the payload in the entropy-coded segment (ECS) for JPEGs
 // Test4: Concatenating a JS payload at the end of a valid image (e.g. after IEND for PNGs)
 // Test5: Embedding the payload in the iDAT for PNGs
-// Test6: Various Experimental #1
+// Test6: (Scholar Pic) Embedding the payload in the entropy-coded segment (ECS) for JPEGs
 
 before(function() {
     clean();
@@ -34,10 +34,11 @@ after(function() {
 })
 
 function runAllTests(interpreter, args, libraryName) {
-    //test1(interpreter, args, libraryName);
-    //test2(interpreter, args, libraryName);
-    //test3(interpreter, args, libraryName);
-    //test4(interpreter, args, libraryName);
+    test1(interpreter, args, libraryName);
+    test2(interpreter, args, libraryName);
+    test3(interpreter, args, libraryName);
+    test4(interpreter, args, libraryName);
+    test5(interpreter, args, libraryName);
     test6(interpreter, args, libraryName);
 }
 
@@ -180,7 +181,7 @@ function test1(interpreter, args, libraryName) {
 function test2(interpreter, args, libraryName) {
     const scriptName = "reprocess_simple";
     const imageSize = [250, 229];
-    const partialImagePath = testImagesBasePath + "payload_in_all_known_exif";
+    const partialImagePath = testImagesBasePath + "payload_in_all_known_metadata";
     const testDescription = "keep multiple XSS payloads in exif when converting";
 
     const testName = getScriptName(arguments.callee);
@@ -192,9 +193,9 @@ function test2(interpreter, args, libraryName) {
 
 function test3(interpreter, args, libraryName) {
     const scriptName = "reprocess_simple";
-    const imageSize = [256, 128];
-    const partialImagePath = testImagesBasePath + "PE.jpeg"
-    const testDescription = "neutralize scholar's payload";
+    const imageSize = [100, 100];
+    const partialImagePath = testImagesBasePath + "test3.jpg"
+    const testDescription = "Embedding the payload in the entropy-coded segment (ECS) for JPEGs";
 
     const testName = getScriptName(arguments.callee);
     testIfOutputImageTriggersXSS(interpreter, args, libraryName, testName, partialImagePath, testDescription, scriptName, imageSize)
@@ -229,9 +230,9 @@ function test5(interpreter, args, libraryName) {
 
 function test6(interpreter, args, libraryName) {
     const scriptName = "reprocess_simple";
-    const imageSize = [512, 512];
-    const partialImagePath = testImagesBasePath + "test6.jpg"
-    const testDescription = "various experimental #1";
+    const imageSize = [256, 128];
+    const partialImagePath = testImagesBasePath + "PE.jpeg"
+    const testDescription = "neutralize scholar's payload";
 
     const testName = getScriptName(arguments.callee);
     testIfOutputImageTriggersXSS(interpreter, args, libraryName, testName, partialImagePath, testDescription, scriptName, imageSize)
