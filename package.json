@@ -1,0 +1,19 @@
+{
+  "name": "xss-resize-payload",
+  "version": "1.0.0",
+  "description": "",
+  "main": "testLibraries.js",
+  "scripts": {
+    "test": "mocha testLibraries.js --timeout=15000 --exit; exit 0"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "execa": "^3.4.0",
+    "filecompare": "^1.0.4",
+    "mocha": "^5.2.0",
+    "puppeteer": "^2.0.0",
+    "rimraf": "^3.0.0"
+  }
+}

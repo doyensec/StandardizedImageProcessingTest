@@ -1,0 +1,5 @@
+{
+    "require": {
+        "imagine/imagine": "^1.2"
+    }
+}
