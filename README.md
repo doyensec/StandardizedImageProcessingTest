@@ -5,6 +5,8 @@ Currently supported libraries:
 - MiniMagick (both ImageMagick and GraphicsMagick drivers)
 - Sharp (libvips driver)
 
+For background on how we leveraged this tool to exploit a Cross-Site Scripting vulnerability affecting a Google web property, please refer to https://blog.doyensec.com/2020/04/30/polymorphic-images-for-xss.html
+
 ## How to run it
 After executing `npm install`, just run:
 ```
